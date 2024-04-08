@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Simple Website</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <div class="wrapper">
+        <h1>Welcome!</h1>
+        <p>This is a simple website that shows the difference between having authorization and not having authorization</p>
+        <br>
+        <!-- Rearrange the order of elements to place the checkbox to the left of the label -->
+        <label class="switch">
+            <input type="checkbox" id="authToggle" onchange="toggleAuthorization()">
+            <span class="slider round"></span>
+        </label>
+        <label for="authToggle">Allow authorization:</label>
+        <br>
+        <button onclick="accessResource()">Access the Site!</button>
+    
+    </div>
+
+    
+    <script>
+        let isAuthorized = false;
+
+        function toggleAuthorization() {
+            isAuthorized = document.getElementById('authToggle').checked;
+            alert("Authorization: " + (isAuthorized ? "Enabled" : "Disabled"));
+        }
+
+        function accessResource() {
+            if (isAuthorized) {
+                // Simulated authorized action: redirect to the employee download page in a new tab
+                alert("Authorized! Redirecting to Faculty and Employee Downloads...");
+                window.open("https://www.pup.edu.ph/downloads/employees/", '_blank');
+            } else {
+                // Action without proper authorization: redirect to the student site in a new tab
+                alert("No Authorization! Redirecting to Student Site...");
+                window.open("https://sis2.pup.edu.ph/student/", '_blank');
+            }
+        }
+    </script>
+</body>
+</html>
